@@ -105,6 +105,21 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
+
+        /* Correction spécifique pour la 4ème carte */
+        @media (min-width: 768px) {
+            .article-card:nth-child(4) {
+                margin-top: 20px;  /* Décale légèrement vers le bas */
+                clear: left;       /* Empêche le chevauchement */
+            }
+        }
+
+        /* Ajustement mobile */
+        @media (max-width: 767px) {
+            .article-card {
+                margin-bottom: 30px !important;  /* Espacement garanti */
+            }
+        }
     </style>
 </head>
 
@@ -153,7 +168,7 @@
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
                 <h2 class="fw-bold mb-4">5 Métiers qui rapportent 10 000 FCFA/jour à Dakar</h2>
-                <p class="text-muted mb-4">Publié le <span class="text-primary">15 juin 2023</span> • Mis à jour</p>
+                <p class="text-muted mb-4">Publié le <span class="text-primary">13 Avril 2025</span> • Mis à jour</p>
                 <img src="https://images.unsplash.com/photo-1683743116592-e096da58bc66?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Artisanat et commerce de rue à Dakar" class="img-fluid rounded mb-4">
                 <div class="text-start">
@@ -186,7 +201,7 @@
         <!-- More Articles -->
         <h3 class="text-center mb-5 fw-bold">Autres articles populaires</h3>
 
-        <div class="row">
+        <div class="row g-4" style="margin-bottom: 30px;">
             <!-- Article 1 -->
             <div class="col-md-4">
                 <div class="card article-card h-100">
@@ -197,7 +212,7 @@
                         <h5 class="card-title">Comment vendre des crédits mobile avec un bénéfice de 10% ?</h5>
                         <p class="card-text text-muted">Découvrez les stratégies pour maximiser vos marges sur la vente
                             de crédit mobile à Dakar.</p>
-                        <a href="#" class="btn btn-sm btn-custom">Lire l'article</a>
+                        <a href="pages/conseils/credit-mobile.html" class="btn btn-sm btn-custom">Lire l'article</a>
                     </div>
                     <div class="card-footer bg-transparent">
                         <small class="text-muted"><i class="far fa-clock me-1"></i> 8 min de lecture</small>
@@ -206,19 +221,18 @@
             </div>
 
             <!-- Article 2 -->
-            <div class="col-md-4">
+            <div class="col-md-4 mb-4">
                 <div class="card article-card h-100">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
-                        class="card-img-top article-img" alt="Vente de vêtements">
                     <div class="card-body">
+                        <img src="https://images.unsplash.com/photo-1571494146906-86de15d3817b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="img-fluid rounded mb-3" alt="Carte des hotspots Dakar">
                         <span class="badge badge-custom mb-2">Localisation</span>
-                        <h5 class="card-title">Les meilleurs quartiers de Dakar pour la vente de vêtements de rue</h5>
-                        <p class="card-text text-muted">Notre guide des emplacements stratégiques pour maximiser vos
-                            ventes de vêtements.</p>
-                        <a href="#" class="btn btn-sm btn-custom">Lire l'article</a>
+                        <h5 class="card-title">Hotspots Dakar</h5>
+                        <p class="card-text text-muted">Les meilleurs emplacements par activité</p>
+                        <a href="pages/conseils/hotspots-dakar.html" class="btn btn-sm btn-custom">Explorer la carte</a>
                     </div>
                     <div class="card-footer bg-transparent">
-                        <small class="text-muted"><i class="far fa-clock me-1"></i> 6 min de lecture</small>
+                        <small class="text-muted"><i class="far fa-clock me-1"></i> 8 min de lecture</small>
                     </div>
                 </div>
             </div>
@@ -226,23 +240,32 @@
             <!-- Article 3 -->
             <div class="col-md-4">
                 <div class="card article-card h-100">
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
-                        class="card-img-top article-img" alt="Livraison à vélo">
                     <div class="card-body">
-                        <span class="badge badge-custom mb-2">Guide pratique</span>
-                        <h5 class="card-title">Livraison à vélo : comment gagner 15 000 FCFA par jour ?</h5>
-                        <p class="card-text text-muted">Toutes les astuces pour optimiser vos tournées et augmenter vos
-                            revenus avec les applications de livraison.</p>
-                        <a href="#" class="btn btn-sm btn-custom">Lire l'article</a>
+                        <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        class="img-fluid rounded mb-3" alt="Coiffeur de rue à Dakar">
+                        <span class="badge badge-custom mb-2">Localisation</span>
+                        <h5 class="card-title">Coiffeur de Rue</h5>
+                        <p class="card-text text-muted">Les meilleurs spots et techniques pour maximiser vos gains</p>
+                        <a href="pages/metiers/coiffure-rue.html" class="btn btn-sm btn-custom">Voir le guide</a>
                     </div>
                     <div class="card-footer bg-transparent">
-                        <small class="text-muted"><i class="far fa-clock me-1"></i> 10 min de lecture</small>
+                        <small class="text-muted"><i class="far fa-clock me-1"></i> 7 min de lecture</small>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
+            <!-- Article 4 support -->
+            <div class="col-md-4">
+                <div class="card article-card h-100">
+                    <div class="card-body text-center">
+                        <div class="contact-icon mx-auto mb-3">
+                            <i class="fas fa-headset text-white"></i>
+                        </div>
+                        <h5>Support Personnalisé</h5>
+                        <p class="small text-muted">Nos experts répondent à vos questions</p>
+                        <a href="pages/contact.html" class="btn btn-sm btn-custom">Nous contacter</a>
+                    </div>
+                </div>
+            </div>
     <!-- Newsletter -->
     <section class="bg-light py-5 mt-5">
         <div class="container">
@@ -268,10 +291,10 @@
     <footer class="text-center">
         <div class="container">
             <div class="social-icons mb-4">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="pages/contact.html"><i class="fab fa-facebook"></i></a>
+                <a href="pages/contact.html"><i class="fab fa-twitter"></i></a>
+                <a href="pages/contact.html"><i class="fab fa-instagram"></i></a>
+                <a href="pages/contact.html"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p class="mb-2">© 2025 Boulots Locaux Sénégal. Tous droits réservés. Contact : +221 77 757 80 12</p>
             <p class="mb-0">Conseils pratiques pour gagner de l'argent à Dakar et au Sénégal</p>

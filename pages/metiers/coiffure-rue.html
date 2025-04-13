@@ -275,21 +275,203 @@
                 </div>
             </div>
         </div>
+        <!-- Quiz des Coiffures -->
+        <div class="mb-5 p-4 border rounded" style="background-color: #f8f9fa;">
+            <h3 class="mb-4 text-center"><i class="fas fa-question-circle me-2"></i> Quiz : Trouvez Votre Spécialité</h3>
+        
+            <!-- Question 1 -->
+            <div class="mb-4">
+                <h5>1. Votre localisation principale :</h5>
+                <select class="form-select quiz-select" data-target="result1">
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="quartier">Quartier populaire (Pikine, Guédiawaye)</option>
+                    <option value="centre">Centre-ville (Plateau, Almadies)</option>
+                    <option value="universite">Près des universités</option>
+                </select>
+                <div id="result1" class="quiz-result mt-2 p-2 rounded d-none"></div>
+            </div>
+        
+            <!-- Question 2 -->
+            <div class="mb-4">
+                <h5>2. Votre budget initial :</h5>
+                <select class="form-select quiz-select" data-target="result2">
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="5000">Moins de 5 000 FCFA (Débutant)</option>
+                    <option value="15000">15 000 FCFA (Équipement standard)</option>
+                    <option value="30000">30 000 FCFA+ (Matériel pro)</option>
+                </select>
+                <div id="result2" class="quiz-result mt-2 p-2 rounded d-none"></div>
+            </div>
+        
+            <!-- Question 3 -->
+            <div class="mb-4">
+                <h5>3. Votre style de travail :</h5>
+                <select class="form-select quiz-select" data-target="result3">
+                    <option value="">-- Sélectionnez --</option>
+                    <option value="rapide">Coupes rapides et basiques</option>
+                    <option value="creatif">Styles artistiques complexes</option>
+                    <option value="soin">Soins capillaires/barbe</option>
+                </select>
+                <div id="result3" class="quiz-result mt-2 p-2 rounded d-none"></div>
+            </div>
+        
+            <!-- Résultat Final -->
+            <div id="finalResult" class="text-center p-4 bg-primary text-white rounded d-none">
+                <h4 class="mb-3">Votre Profil : <span id="profilType"></span></h4>
+                <p id="profilDesc" class="mb-0"></p>
+            </div>
+        </div>
+        
+        
+        
+        <!-- Style pour le Quiz -->
+        <style>
+            .quiz-select {
+                border: 2px solid #2c3e50;
+            }
+        
+            .quiz-result {
+                background-color: #e8f4fd;
+                border-left: 4px solid #3498db;
+            }
+        
+            #finalResult {
+                transition: all 0.5s ease;
+            }
+        </style>
     </div>
 
     <!-- Même footer que index.html -->
     <footer class="text-center">
         <div class="container">
             <div class="social-icons mb-4">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="../contact.html"><i class="fab fa-facebook"></i></a>
+                <a href="../contact.html"><i class="fab fa-twitter"></i></a>
+                <a href="../contact.html"><i class="fab fa-instagram"></i></a>
+                <a href="../contact.html"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p class="mb-2">© 2025 Boulots Locaux Sénégal. Tous droits réservés. Contact : +221 77 757 80 12</p>
             <p class="mb-0">Conseils pratiques pour gagner de l'argent à Dakar et au Sénégal</p>
         </div>
     </footer>
+
+    <!-- Script du Quiz -->
+    <script>
+        document.querySelectorAll('.quiz-select').forEach(select => {
+            select.addEventListener('change', function () {
+                const targetId = this.getAttribute('data-target');
+                const resultDiv = document.getElementById(targetId);
+
+                if (this.value) {
+                    resultDiv.classList.remove('d-none');
+
+                    // Réponses spécifiques
+                    if (targetId === 'result1') {
+                        const responses = {
+                            'quartier': "🔸 <strong>Conseil :</strong> Privilégiez les coupes courtes et dégradés (demande rapide)",
+                            'centre': "🔸 <strong>Conseil :</strong> Offrez des services premium (modelage barbe, soins)",
+                            'universite': "🔸 <strong>Conseil :</strong> Styles tendance (afro texturé, motifs)"
+                        };
+                        resultDiv.innerHTML = responses[this.value];
+                    }
+                    else if (targetId === 'result2') {
+                        const responses = {
+                            '5000': `💰 <strong>Stratégie :</strong> Commencez avec l'essentiel :
+                                <ul class="mt-2 small">
+                                    <li>Tondeuse d'occasion (3 000 FCFA)</li>
+                                    <li>1 peigne + ciseaux basique</li>
+                                    <li>Focus sur coupes simples</li>
+                                </ul>`,
+                            '15000': `📈 <strong>Stratégie :</strong> Kit standard :
+                                <ul class="mt-2 small">
+                                    <li>Tondeuse neuve (8 000 FCFA)</li>
+                                    <li>Kit complet + produits</li>
+                                    <li>Formation YouTube gratuite</li>
+                                </ul>`,
+                            '30000': `🚀 <strong>Stratégie :</strong> Niveau professionnel :
+                                <ul class="mt-2 small">
+                                    <li>Tondeuse haut de gamme (15 000 FCFA+)</li>
+                                    <li>Chaise pliante professionnelle</li>
+                                    <li>Produits premium (huiles, cires)</li>
+                                </ul>`
+                        };
+                        resultDiv.innerHTML = responses[this.value];
+                    }
+                    else if (targetId === 'result3') {
+                        const responses = {
+                            'rapide': `⚡ <strong>Opportunités :</strong> 
+                                <ul class="mt-2 small">
+                                    <li>Dégradés brésiliens (10-15 min/coupe)</li>
+                                    <li>Tarif : 500-800 FCFA</li>
+                                    <li>Cible : Lycéens, travailleurs</li>
+                                </ul>`,
+                            'creatif': `🎨 <strong>Opportunités :</strong>
+                                <ul class="mt-2 small">
+                                    <li>Styles graphiques/tresses (30-45 min)</li>
+                                    <li>Tarif : 1 500-3 000 FCFA</li>
+                                    <li>Cible : Jeunes urbains, influenceurs</li>
+                                </ul>`,
+                            'soin': `🧴 <strong>Opportunités :</strong>
+                                <ul class="mt-2 small">
+                                    <li>Soins barbe/cheveux (20-30 min)</li>
+                                    <li>Tarif : 1 000-2 500 FCFA</li>
+                                    <li>Cible : Cadres, 25-40 ans</li>
+                                </ul>`
+                        };
+                        resultDiv.innerHTML = responses[this.value];
+                    }
+                } else {
+                    resultDiv.classList.add('d-none');
+                }
+
+                checkAllAnswers();
+            });
+        });
+
+        function checkAllAnswers() {
+            const answers = Array.from(document.querySelectorAll('.quiz-select')).map(select => select.value);
+
+            if (answers.every(Boolean)) {
+                const finalResult = document.getElementById('finalResult');
+                const profilType = document.getElementById('profilType');
+                const profilDesc = document.getElementById('profilDesc');
+
+                const q1 = document.querySelector('[data-target="result1"]').value;
+                const q2 = document.querySelector('[data-target="result2"]').value;
+                const q3 = document.querySelector('[data-target="result3"]').value;
+
+                // Profils combinés
+                if (q1 === 'quartier' && q3 === 'rapide') {
+                    profilType.textContent = "⚡ Le Rapide des Quartiers";
+                    profilDesc.innerHTML = `<strong>Spécialité :</strong> Coupes express (15 min max)<br>
+                                <strong>CA potentiel :</strong> 8 000-12 000 FCFA/jour<br>
+                                <strong>Matériel :</strong> ${q2 === '5000' ? 'Kit débutant' : q2 === '15000' ? 'Kit standard' : 'Kit pro'}`;
+                }
+                else if (q1 === 'centre' && q3 === 'soin') {
+                    profilType.textContent = "💈 Le Barbier Chic";
+                    profilDesc.innerHTML = `<strong>Spécialité :</strong> Soins premium barbe/cheveux<br>
+                                <strong>CA potentiel :</strong> 15 000-25 000 FCFA/jour<br>
+                                <strong>Investissement :</strong> ${q2 === '30000' ? 'Haut de gamme recommandé' : 'Matériel standard possible'}`;
+                }
+                else if (q1 === 'universite' && q3 === 'creatif') {
+                    profilType.textContent = "🎨 L'Artiste Campus";
+                    profilDesc.innerHTML = `<strong>Spécialité :</strong> Styles tendance étudiants<br>
+                                <strong>CA potentiel :</strong> 10 000-18 000 FCFA/jour<br>
+                                <strong>Tips :</strong> Offrez des tarifs groupe`;
+                }
+                else {
+                    profilType.textContent = "🌟 Le Polyvalent";
+                    profilDesc.textContent = "Adaptez votre offre selon la demande locale. Mixez plusieurs styles pour maximiser vos revenus.";
+                }
+
+                finalResult.classList.remove('d-none');
+            }
+            
+        }
+
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
