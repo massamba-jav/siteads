@@ -180,44 +180,23 @@
                 <div class="contact-card card border-0 shadow-sm h-100">
                     <div class="card-body p-5">
                         <h2 class="mb-4"><i class="fas fa-paper-plane me-2"></i> Envoyez-nous un message</h2>
+                        <form name="contact" netlify netlify-honeypot="bot-field" action="merci.html" class="bg-light p-4 rounded">
+                            <!-- Champ caché obligatoire -->
+                            <input type="hidden" name="form-name" value="contact">
 
-                        <form id="contactForm">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="name" class="form-label">Votre nom complet</label>
-                                    <input type="text" class="form-control" id="name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="phone" class="form-label">Téléphone</label>
-                                    <input type="tel" class="form-control" id="phone" placeholder="77 123 45 67">
-                                </div>
-                                <div class="col-12">
-                                    <label for="business" class="form-label">Type d'activité</label>
-                                    <select class="form-select" id="business">
-                                        <option value="credit">Vente de crédit mobile</option>
-                                        <option value="coiffure">Coiffure de rue</option>
-                                        <option value="snack">Vente de snacks</option>
-                                        <option value="other">Autre</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <label for="message" class="form-label">Votre demande</label>
-                                    <textarea class="form-control" id="message" rows="5" required></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="newsletter">
-                                        <label class="form-check-label" for="newsletter">
-                                            Recevoir les conseils business par email
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-custom px-4 py-2">
-                                        <i class="fas fa-paper-plane me-2"></i>Envoyer
-                                    </button>
-                                </div>
-                            </div>
+                            <!-- Honeypot optionnel (invisible pour les humains) -->
+                            <p class="d-none">
+                                <label>Ne remplis pas ceci : <input name="bot-field"></label>
+                            </p>
+
+                            <!-- Tes champs normaux -->
+                            <input type="text" name="nom" class="form-control mb-3" placeholder="Nom complet" required>
+                            <input type="tel" name="telephone" class="form-control mb-3" placeholder="Téléphone">
+                            <textarea name="message" class="form-control mb-3" rows="3" placeholder="Message" required></textarea>
+
+                            <button type="submit" class="btn btn-custom w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Envoyer
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -321,25 +300,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script>
-        // Gestion du formulaire
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Ici vous ajouterez le code pour envoyer les données
-            alert('Message envoyé! Nous vous contacterons dans les 24h.');
-            this.reset();
-
-            // En production, utiliser :
-            // fetch() ou XMLHttpRequest vers votre backend
-        });
-
-        // Initialisation des tooltips
-        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-    </script>
 
     <script>
         document.getElementById('showFormBtn').addEventListener('click', function () {
